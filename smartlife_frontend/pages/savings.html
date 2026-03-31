@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartLife | Savings Management</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/finance.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/savings.css"> </head>
+<body>
+
+<div class="container">
+    <nav class="sidebar" id="sidebar-placeholder"></nav>
+
+    <main class="main-content">
+        <header class="glass">
+            <div class="header-left">
+                <h1><i class="fas fa-piggy-bank"></i> My Smart Savings</h1>
+                <p>SmartLife | Track and manage your wealth growth</p>
+            </div>
+        </header>
+
+        <section class="savings-hero">
+            <small>Current Total Savings Balance</small>
+            <div class="total-balance-amount" id="lblTotalSavings">Rs. 0.00</div>
+            <p id="lblLastUpdated">Last updated: --</p>
+        </section>
+
+        <div class="main-grid">
+            <aside class="glass-card">
+                <h3 class="form-title"><i class="fas fa-money-bill-transfer"></i> Withdraw Funds</h3>
+                <form id="withdrawForm">
+                    <div class="form-group">
+                        <label>Amount to Withdraw (Rs.)</label>
+                        <input type="number" id="txtWithdrawAmount" placeholder="Ex: 5000" required>
+                    </div>
+                    <button type="submit" class="btn-withdraw-action">
+                        <i class="fas fa-check-circle"></i> Confirm Withdrawal
+                    </button>
+                </form>
+            </aside>
+
+            <section class="glass-card">
+                <h3 class="form-title"><i class="fas fa-list-ul"></i> Transaction History</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Category</th>
+                            <th>Month</th>
+                            <th style="text-align: right;">Amount (Rs.)</th>
+                        </tr>
+                        </thead>
+                        <tbody id="savingsHistoryTable">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+</div>
+
+<script src="../js/jqueri-3.7min.js"></script>
+<script src="../js/slidebar.js"></script>
+<script src="../js/savings.js"></script> </body>
+</html>

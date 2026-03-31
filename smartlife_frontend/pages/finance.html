@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartLife | Finance Control</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/finance.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+</head>
+<body>
+
+<div class="container">
+    <nav class="sidebar" id="sidebar-placeholder"></nav>
+
+    <main class="main-content">
+        <header class="glass">
+            <div class="header-left">
+                <h1><i class="fas fa-wallet"></i> Finance Control Center</h1>
+                <p>SmartLife | Manage your <span style="color: var(--primary);">Monthly Budget & Savings</span></p>
+            </div>
+        </header>
+
+        <div class="main-grid">
+            <aside class="glass-card">
+                <h3 class="form-title"><i class="fas fa-money-check-dollar" style="color: var(--success);"></i> Monthly Budget</h3>
+                <div id="salaryStatus" class="status-badge badge-pending">Estimated Mode</div>
+
+                <form id="salaryForm">
+                    <div class="form-group">
+                        <label>Target Month</label>
+                        <input type="month" id="salaryMonth" required>
+                    </div>
+                    <div class="form-group">
+                        <label id="salaryLabel">Actual Salary (Rs.)</label>
+                        <input type="number" id="salaryAmount" placeholder="Ex: 75000" required>
+                    </div>
+                    <div class="form-group">
+                        <label style="color: var(--primary); font-weight: 500;">Monthly Savings Goal (Rs.)</label>
+                        <input type="number" id="savingsGoal" placeholder="Ex: 10000">
+                    </div>
+                    <div class="switch-group">
+                        <label>Finalize Budget</label>
+                        <label class="switch">
+                            <input type="checkbox" id="isFinalized">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn-submit">Update Budget</button>
+                </form>
+            </aside>
+
+            <section class="glass-card">
+                <h3 class="form-title"><i class="fas fa-hand-holding-dollar" style="color: var(--primary);"></i> Fixed Loans & Expenses</h3>
+                <form id="loanForm" class="finance-inline-form">
+                    <div class="form-group">
+                        <label>Expense Title</label>
+                        <input type="text" id="loanTitle" placeholder="Ex: Bank Loan" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Amount (Rs.)</label>
+                        <input type="number" id="loanAmount" placeholder="1000" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Ends On</label>
+                        <input type="date" id="loanEndDate">
+                    </div>
+                    <button type="submit" class="btn-add-item"><i class="fas fa-plus"></i> Add</button>
+                </form>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Expiry</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody id="loanTableBody"></tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+</div>
+
+<script src="../js/jqueri-3.7min.js"></script>
+<script src="../js/slidebar.js"></script>
+<script src="../js/finance.js"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartLife | Member Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/dashboard-style.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+</head>
+<body>
+
+<div class="container">
+    <nav class="sidebar" id="sidebar-placeholder"></nav>
+
+    <main class="main-content">
+        <header class="glass">
+            <div class="header-left">
+                <h1>Member Portal</h1>
+                <p id="current-date">Manage your Daily Transactions</p>
+            </div>
+            <div class="header-right">
+                <div class="user-badge-top">
+                    <span id="memberName">Member Name</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="dashboard-layout" style="grid-template-columns: 1fr;">
+            <div class="left-column">
+                <div class="glass-card quick-add-card">
+                    <h3><i class="fas fa-cart-plus"></i> Record Daily Expense</h3>
+                    <div class="expense-form">
+                        <input type="number" id="expense-amount" placeholder="Amount (Rs.)">
+                        <input type="text" id="expense-reason" placeholder="Reason (e.g. Tea, Bus, Lunch)">
+                        <select id="expense-category" class="glass-input" style="padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.2); color: white; margin-bottom: 15px;">
+                            <option value="Food">Food & Drinks</option>
+                            <option value="Transport">Transport</option>
+                            <option value="Personal">Personal</option>
+                        </select>
+                        <button class="save-btn" onclick="addMemberExpense()">Save Transaction</button>
+                    </div>
+                </div>
+
+                <div class="glass-card history-card">
+                    <h3>Your Recent Transactions</h3>
+                    <div class="table-container">
+                        <table id="expenseTable">
+                            <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Reason</th>
+                                <th>Amount</th>
+                            </tr>
+                            </thead>
+                            <tbody id="memberExpenseBody">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="../js/jqueri-3.7min.js"></script>
+<script>
+    $(function(){
+        // Sidebar එක load කිරීම
+        $("#sidebar-placeholder").load("sidebar.html", function(response, status, xhr) {
+            if (status == "error") return;
+
+            let role = localStorage.getItem("role");
+
+            if (role === "MEMBER") {
+                // 1. මුලින්ම සියලුම links හංගන්න (CSS එකෙනුත් කරලා තියෙන්නේ)
+                $(".nav-links li").hide();
+
+                // 2. අකුරු (Text) එක පරීක්ෂා කරලා Daily Expenses සහ Smart Reminders විතරක් පෙන්වන්න
+                $(".nav-links li").each(function() {
+                    let linkText = $(this).text().toLowerCase();
+
+                    if (linkText.includes("daily expenses") || linkText.includes("smart reminders")) {
+                        $(this).addClass("show-member").show();
+                    }
+                });
+
+                // 3. Admin-only class එක තියෙන දේවල් ඉවත් කරන්න
+                $(".admin-only").remove();
+                $(".u-info small").text("Family Member");
+            } else {
+                // Admin නම් සියල්ල පෙන්වන්න
+                $(".nav-links li").show();
+                $(".u-info small").text("Administrator");
+            }
+
+            // Active Page එක Highlight කිරීම
+            $("#nav-expenses").addClass("active");
+        });
+    });
+</script><script src="../js/member.js"></script>
+</body>
+</html>

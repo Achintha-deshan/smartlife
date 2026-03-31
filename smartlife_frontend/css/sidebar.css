@@ -1,0 +1,102 @@
+.sidebar {
+    width: 260px;
+    height: 100vh;
+    background: #0f172a;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 15px 20px; /* Padding මදක් අඩු කළා */
+    display: flex;
+    flex-direction: column;
+    z-index: 2000;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease-in-out;
+}
+
+.logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+}
+
+.logo-text {
+    font-size: 20px;
+    font-weight: 700;
+    color: #4e73df;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.close-sidebar-btn {
+    display: none;
+    color: #94a3b8;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.nav-menu {
+    flex-grow: 1; /* මැද කොටසට වැඩි ඉඩක් දී Footer එක යටටම තල්ලු කරයි */
+    overflow-y: auto; /* Buttons වැඩි වුණොත් මැද කොටස පමණක් scroll වේ */
+}
+
+/* Scrollbar පිරිසිදු කිරීමට */
+.nav-menu::-webkit-scrollbar { width: 3px; }
+.nav-menu::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); }
+
+.menu-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #94a3b8;
+    margin: 15px 0 8px 5px;
+}
+
+.nav-links { list-style: none; padding: 0; }
+.nav-links li { margin-bottom: 4px; }
+
+.nav-links li a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 15px;
+    color: #94a3b8;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+.nav-links li a:hover, .nav-links li.active a {
+    background: #4e73df;
+    color: #fff;
+}
+
+.sidebar-footer {
+    margin-top: auto; /* මෙය අත්‍යවශ්‍යයි */
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.user-badge { display: flex; align-items: center; gap: 8px; }
+.user-badge img { width: 32px; height: 32px; border-radius: 8px; }
+.u-info span { font-size: 12px; font-weight: 600; color: #fff; display: block; }
+.u-info small { color: #94a3b8; font-size: 10px; }
+
+.logout-btn { color: #ef4444; font-size: 16px; cursor: pointer; }
+
+@media screen and (max-width: 992px) {
+    .sidebar { left: -260px; }
+    .sidebar.active { left: 0; }
+    .close-sidebar-btn { display: block; }
+}
+
+/* MEMBER කෙනෙක් එද්දී flickering වීම වැළැක්වීමට මුලින්ම හංගන්න */
+.admin-only {
+    display: none;
+}

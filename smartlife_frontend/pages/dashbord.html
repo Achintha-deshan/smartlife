@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartLife | DeshTech Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <link rel="stylesheet" href="../css/dashboard-style.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+</head>
+<body>
+
+<div class="container">
+    <nav class="sidebar" id="sidebar-placeholder"></nav>
+
+    <main class="main-content">
+        <header class="glass">
+            <div class="header-left">
+                <h1>Command Center</h1>
+                <p id="current-date">Loading date...</p>
+            </div>
+            <div class="header-right">
+                <button class="action-btn" onclick="document.getElementById('expense-amount').focus()">
+                    <i class="fas fa-plus"></i> Add Expense
+                </button>
+                <div class="notif-icon">
+                    <i class="fas fa-bell"></i>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </header>
+
+        <div class="overview-header-grid">
+            <div class="glass-card mini-stat">
+                <div class="icon-box blue"><i class="fas fa-coins"></i></div>
+                <div>
+                    <small>Daily Limit</small>
+                    <h3 id="daily-limit-text">Rs. 0.00</h3>
+                </div>
+            </div>
+            <div class="glass-card mini-stat">
+                <div class="icon-box red"><i class="fas fa-money-bill-wave"></i></div>
+                <div>
+                    <small>Total Savings</small>
+                    <h3 id="total-savings-text">Rs. 0.00</h3>
+                </div>
+            </div>
+            <div class="glass-card mini-stat">
+                <div class="icon-box green"><i class="fas fa-wallet"></i></div>
+                <div>
+                    <small>Remaining Today</small>
+                    <h3 id="remainingText">Rs. 0.00</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-layout">
+            <div class="left-column">
+                <div class="glass-card quick-add-card">
+                    <h3><i class="fas fa-cart-plus"></i> Record Daily Expense</h3>
+                    <div class="expense-form">
+                        <input type="number" id="expense-amount" placeholder="Amount (Rs.)">
+                        <input type="text" id="expense-reason" placeholder="Reason (e.g. Fuel, Lunch)">
+                        <button class="save-btn" onclick="addExpense()">Save Transaction</button>
+                    </div>
+                </div>
+
+                <div class="glass-card history-card">
+                    <h3>Today's Transactions</h3>
+                    <div class="table-container">
+                        <table id="expenseTable">
+                            <thead>
+                            <tr>
+                                <th>Reason</th>
+                                <th>Category</th>
+                                <th>Amount</th>
+                            </tr>
+                            </thead>
+                            <tbody id="expenseBody">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <div class="glass-card reminders-card">
+                    <h3>Upcoming Reminders</h3>
+                    <div id="reminders-list" class="rem-list">
+                        <p style="font-size: 0.8rem; color: #ccc; padding: 10px;">No pending reminders</p>
+                    </div>
+                </div>
+
+                <div class="glass-card safety-feed">
+                    <h3>Live Safety</h3>
+                    <div id="safety-feed-container">
+                        <div class="feed-item">
+                            <div class="feed-icon warning"><i class="fas fa-sync-alt fa-spin"></i></div>
+                            <div class="feed-text">
+                                <strong>System</strong>
+                                <small>Monitoring active...</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="../js/jqueri-3.7min.js"></script>
+<script src="../js/slidebar.js"></script>
+<script src="../js/dashbord.js"></script>
+
+<script>
+    // පේජ් එක ලෝඩ් වෙද්දී අද දවස පෙන්වන්න පොඩි script එකක්
+    document.getElementById('current-date').innerText = new Date().toLocaleDateString('en-GB', {
+        weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
+    });
+</script>
+
+</body>
+</html>

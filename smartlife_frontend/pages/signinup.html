@@ -1,0 +1,77 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smartlife - Authentication</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="theme-toggle">
+  <button type="button" class="theme-btn" id="themeToggleBtn" onclick="toggleTheme()">
+    <i class="fas fa-moon"></i>
+  </button>
+</div>
+
+<div class="main-wrapper" id="mainContainer">
+  <div class="animated-circle"></div>
+
+  <div class="content-wrapper">
+    <div class="forms-section">
+      <form class="auth-form login-form" id="loginForm">
+        <h2 class="form-heading">Sign In</h2>
+        <div class="field-container">
+          <i class="fas fa-envelope"></i>
+          <input type="email" id="loginEmail" placeholder="Email" required>
+        </div>
+        <div class="field-container">
+          <i class="fas fa-lock"></i>
+          <input type="password" id="loginPass" placeholder="Password" required>
+          <i class="far fa-eye eye-icon" onclick="togglePasswordVisibility('loginPass', this)"></i>
+        </div>
+        <button type="submit" class="action-button">Login</button>
+      </form>
+
+      <form class="auth-form signup-form" id="signupForm">
+        <h2 class="form-heading">Create Account</h2>
+        <div class="field-container">
+          <i class="fas fa-user"></i>
+          <input type="text" id="signupName" placeholder="Full Name" required>
+        </div>
+        <div class="field-container">
+          <i class="fas fa-envelope"></i>
+          <input type="email" id="signupEmail" placeholder="Email" required>
+        </div>
+        <div class="field-container">
+          <i class="fas fa-lock"></i>
+          <input type="password" id="signupPass" placeholder="Password" required>
+          <i class="far fa-eye eye-icon" onclick="togglePasswordVisibility('signupPass', this)"></i>
+        </div>
+        <button type="submit" class="action-button">Sign Up</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="side-panels">
+    <div class="info-panel left-info">
+      <div class="panel-content">
+        <h3>Don't have an account?</h3>
+        <p>Register as a Family Head to manage your smart life.</p>
+        <button class="transparent-btn" onclick="switchToRegister()">Sign Up</button>
+      </div>
+    </div>
+    <div class="info-panel right-info">
+      <div class="panel-content">
+        <h3>Already have an account?</h3>
+        <p>Sign in to manage your family and smart devices.</p>
+        <button class="transparent-btn" onclick="switchToLogin()">Sign In</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../js/jqueri-3.7min.js"></script>
+<script src="../js/script.js"></script>
+</body>
+</html>

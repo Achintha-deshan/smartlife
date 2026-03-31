@@ -1,0 +1,297 @@
+/* --- 1. GLOBAL VARIABLES & RESET --- */
+:root {
+    --primary: #4e73df;
+    --bg: #0f172a;
+    --sidebar-bg: rgba(15, 23, 42, 0.95);
+    --glass: rgba(255, 255, 255, 0.03);
+    --border: rgba(255, 255, 255, 0.08);
+    --text-main: #f8fafc;
+    --text-dim: #94a3b8;
+    --success: #1cc88a;
+    --danger: #ef4444;
+    --sidebar-w: 280px; /* Sidebar එකේ පළල - මේක වෙනස් කරන්න එපා */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: radial-gradient(circle at top right, #1e293b, #0f172a);
+    color: var(--text-main);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* --- 2. CORE LAYOUT (FIXES THE JUMPING ISSUE) --- */
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar - Fixed Position */
+.sidebar {
+    width: var(--sidebar-w);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--sidebar-bg);
+    backdrop-filter: blur(20px);
+    border-right: 1px solid var(--border);
+    z-index: 1000;
+    padding: 25px;
+    transition: transform 0.3s ease;
+}
+
+/* Main Content - Always matches Sidebar width */
+.main-content {
+    flex: 1;
+    margin-left: var(--sidebar-w);
+    padding: 30px;
+    min-height: 100vh;
+    transition: all 0.3s ease;
+}
+
+/* --- 3. COMPONENTS (CARDS & GRIDS) --- */
+.glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.main-grid {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 25px;
+}
+
+/* --- 4. FORMS & INPUTS --- */
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; font-size: 12px; color: var(--text-dim); margin-bottom: 6px; }
+
+input, select {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    padding: 12px;
+    border-radius: 12px;
+    color: white;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus { border-color: var(--primary); background: rgba(255,255,255,0.08); }
+
+/* Buttons */
+.btn-submit {
+    width: 100%;
+    padding: 14px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-submit:hover {
+    background: #3756b5;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(78, 115, 223, 0.3);
+}
+
+/* --- 5. SWITCH / TOGGLE STYLE --- */
+.switch-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.switch { position: relative; width: 44px; height: 22px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
+    position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+    background: #334155; border-radius: 34px; transition: 0.4s;
+}
+
+.slider:before {
+    position: absolute; content: ""; height: 16px; width: 16px;
+    left: 3px; bottom: 3px; background: white; border-radius: 50%; transition: 0.4s;
+}
+
+input:checked + .slider { background: var(--success); }
+input:checked + .slider:before { transform: translateX(22px); }
+
+/* --- 6. RESPONSIVE DESIGN --- */
+
+/* Tablets */
+@media screen and (max-width: 1100px) {
+    .main-grid { grid-template-columns: 1fr; }
+}
+
+/* Mobile Devices */
+@media screen and (max-width: 992px) {
+    .sidebar {
+        transform: translateX(-100%); /* Sidebar එක හංගනවා */
+    }
+
+    .sidebar.active {
+        transform: translateX(0); /* JavaScript වලින් active කළොත් පෙන්වනවා */
+    }
+
+    .main-content {
+        margin-left: 0; /* Content එක full width වෙනවා */
+        padding: 20px;
+    }
+}
+
+/* --- FINANCE TABLE STYLES --- */
+
+/* Table එක තියෙන Card එක ඇතුළේ padding පාලනය */
+.table-container {
+    margin-top: 20px;
+    overflow-x: auto; /* Mobile වලදී table එක side එකට scroll කරන්න */
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px; /* Table එක ඕනෑවට වඩා කුඩා වීම වළක්වයි */
+}
+
+/* Table Header */
+thead {
+    background: rgba(78, 115, 223, 0.1); /* Primary color එකෙන් පොඩි tint එකක් */
+}
+
+th {
+    text-align: left;
+    padding: 16px 20px;
+    color: var(--text-dim);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--border);
+}
+
+/* Table Body */
+td {
+    padding: 16px 20px;
+    font-size: 14px;
+    color: var(--text-main);
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+}
+
+/* Row එක උඩට mouse එක ගෙනියද්දී hover effect එක */
+tbody tr {
+    transition: 0.3s;
+}
+
+tbody tr:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* මුදල් ප්‍රමාණයන් පෙන්වන තීරුව (Amount Column) */
+td:nth-child(2) {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+/* Expiry date column */
+td:nth-child(3) {
+    color: var(--text-dim);
+    font-size: 13px;
+}
+
+/* Actions Column (Buttons) */
+.action-btns {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-delete {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--danger);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    padding: 6px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-delete:hover {
+    background: var(--danger);
+    color: white;
+}
+
+/* --- Inline Form එක ලස්සන කිරීම --- */
+.finance-inline-form {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr auto;
+    gap: 15px;
+    align-items: flex-end;
+    margin-bottom: 25px;
+}
+
+.btn-add-item {
+    background: var(--primary);
+    color: white;
+    border: none;
+    height: 48px;
+    padding: 0 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-add-item:hover {
+    background: #3756b5;
+    transform: translateY(-2px);
+}
+
+/* Status Badge Styles */
+.status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.badge-pending {
+    background: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+    border: 1px solid rgba(255, 193, 7, 0.2);
+}
+
+/* --- Responsive Adjustments --- */
+@media screen and (max-width: 992px) {
+    .finance-inline-form {
+        grid-template-columns: 1fr;
+    }
+    .btn-add-item {
+        width: 100%;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartLife | Daily Expenses</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/daily-expenses.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+
+</head>
+<body>
+
+<div class="container">
+    <nav class="sidebar" id="sidebar-placeholder"></nav>
+    <main class="main-content">
+        <header class="glass">
+            <div class="header-left">
+                <h1><i class="fas fa-receipt"></i> Daily Spending Tracker</h1>
+                <p>SmartLife | Tracking your <span style="color: var(--primary);">Everyday Transactions</span></p>
+            </div>
+        </header>
+
+        <div class="main-grid">
+            <aside class="glass-card">
+                <h3 class="form-title"><i class="fas fa-plus-circle" style="color: var(--primary);"></i> Add New Expense</h3>
+                <div id="limitStatus" class="status-badge badge-limit">
+                    Daily Limit: Rs. <span id="lblDailyLimit">0.00</span>
+                </div>
+                <form id="dailyExpenseForm">
+                    <div class="form-group">
+                        <label>Description</label>
+                        <input type="text" id="expenseDesc" placeholder="Ex: Lunch / Bus Fare" required>
+                        <small id="description_error" class="error-msg"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Amount (Rs.)</label>
+                        <input type="number" id="expenseAmount" placeholder="Ex: 250" required>
+                        <small id="amount_error" class="error-msg"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select id="expenseCategory" class="custom-select">
+                            <option value="Food">🍔 Food & Drinks</option>
+                            <option value="Transport">🚌 Transport</option>
+                            <option value="Health">💊 Health</option>
+                            <option value="Entertainment">🎬 Entertainment</option>
+                            <option value="Shopping">🛍️ Shopping</option>
+                            <option value="Other">✨ Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="date" id="expenseDate">
+                    </div>
+
+                    <button type="submit" class="btn-submit" id="btnSaveExpense">
+                        <i class="fas fa-save"></i> Save Transaction
+                    </button>
+                </form>
+            </aside>
+
+            <section class="glass-card">
+                <div class="header-flex">
+                    <h3 class="form-title"><i class="fas fa-history" style="color: var(--success);"></i> Recent Spending</h3>
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="tableSearch" placeholder="Search expenses...">
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th style="text-align: right;">Amount (Rs.)</th>
+                            <th style="text-align: center;">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody id="dailyExpenseTableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+</div>
+
+<script src="../js/jqueri-3.7min.js"></script>
+<script src="../js/slidebar.js"></script>
+<script src="../js/daily-expenses.js"></script>
+</body>
+</html>

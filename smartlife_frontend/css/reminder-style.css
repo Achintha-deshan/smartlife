@@ -1,0 +1,168 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #0f1014; /* Deep Dark */
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.reminder-container {
+    width: 100%;
+    max-width: 600px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.8rem;
+    background: linear-gradient(90deg, #ff007a, #00d4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.back-btn {
+    color: white;
+    font-size: 1.2rem;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.1);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 12px;
+    color: white;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #00d4ff;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.main-btn {
+    background: linear-gradient(135deg, #00d4ff, #0072ff);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.main-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+}
+
+/* List Items */
+.list-section h3 {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.rem-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.rem-meta strong {
+    display: block;
+    font-size: 1rem;
+}
+
+.rem-meta span {
+    font-size: 0.8rem;
+    color: #00d4ff;
+}
+
+.rem-item.bday-theme {
+    border-left: 4px solid #ff007a;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    body {
+        padding: 20px 15px; /* පැතිවල හිස් ඉඩ අඩු කිරීම */
+    }
+
+    header {
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    header h1 {
+        font-size: 1.4rem; /* Font එක පොඩි කිරීම */
+    }
+
+    .back-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+
+    .glass-card {
+        padding: 18px; /* Card එක ඇතුලේ ඉඩ පාලනය */
+    }
+
+    .rem-item {
+        flex-direction: column; /* Content එක එක යට එක වැටීමට */
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    input, .main-btn {
+        padding: 12px; /* Input box වල size එක අඩු කිරීම */
+        font-size: 0.9rem;
+    }
+
+    .rem-meta strong {
+        font-size: 0.9rem;
+    }
+}

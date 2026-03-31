@@ -1,0 +1,121 @@
+/* --- GLOBAL THEME VARIABLES --- */
+:root {
+    --primary: #4e73df;
+    --bg: #0f172a;
+    --glass: rgba(255, 255, 255, 0.03);
+    --border: rgba(255, 255, 255, 0.08);
+    --text-main: #f8fafc;
+    --text-dim: #94a3b8;
+    --success: #1cc88a;
+    --danger: #ef4444;
+    --sidebar-width: 260px; /* Sidebar එකේ පළල මෙතනින් පාලනය වේ */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+body {
+    background: radial-gradient(circle at top right, #1e293b, #0f172a);
+    color: var(--text-main);
+    min-height: 100vh;
+}
+
+/* --- MAIN CONTENT AREA (SIDEBAR එකට ඉඩ තැබීම) --- */
+.main-content {
+    margin-left: var(--sidebar-width); /* Sidebar එකට ඉඩ තබයි */
+    padding: 30px;
+    width: calc(100% - var(--sidebar-width));
+    transition: all 0.3s ease;
+}
+
+/* Header Section */
+header {
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 20px;
+}
+header h1 { font-family: 'Syne'; font-size: 28px; color: var(--primary); }
+header p { color: var(--text-dim); font-size: 14px; }
+
+/* Dashboard / Page Grid Layout */
+.main-grid {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 25px;
+}
+
+/* Glass Card Component */
+.glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 25px;
+}
+
+.form-title { margin-bottom: 20px; font-size: 18px; display: flex; align-items: center; gap: 10px; }
+
+/* Header Utilities */
+.header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+
+.search-box { position: relative; width: 250px; }
+.search-box i { position: absolute; left: 12px; top: 14px; color: var(--text-dim); font-size: 13px; }
+.search-box input { padding-left: 35px; height: 40px; font-size: 13px; width: 100%; }
+
+/* Form Elements */
+.form-group { margin-bottom: 18px; }
+.form-group label { display: block; font-size: 12px; color: var(--text-dim); margin-bottom: 6px; }
+
+input, .custom-select {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    padding: 12px;
+    border-radius: 10px;
+    color: white;
+    outline: none;
+    transition: 0.3s;
+}
+
+.btn-submit {
+    width: 100%;
+    background: var(--primary);
+    color: white; border: none;
+    border-radius: 10px;
+    padding: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.btn-submit:hover { background: #3756b5; transform: translateY(-2px); }
+
+/* Table Styling */
+.table-container { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th { text-align: left; padding: 15px; border-bottom: 2px solid var(--border); color: var(--text-dim); font-size: 11px; text-transform: uppercase; }
+td { padding: 15px; border-bottom: 1px solid var(--border); font-size: 13px; }
+
+/* Status & Actions */
+.action-btns { display: flex; gap: 10px; justify-content: center; }
+.btn-icon { background: none; border: none; color: var(--text-dim); cursor: pointer; transition: 0.2s; }
+.btn-icon:hover { transform: scale(1.2); color: var(--primary); }
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+
+@media screen and (max-width: 1100px) {
+    .main-grid { grid-template-columns: 1fr; }
+}
+
+@media screen and (max-width: 992px) {
+    .main-content {
+        margin-left: 0; /* Mobile වලදී Sidebar එක hide වෙන නිසා margin එක අයින් වේ */
+        width: 100%;
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    header { text-align: center; }
+    .header-flex { flex-direction: column; gap: 15px; align-items: flex-start; }
+}

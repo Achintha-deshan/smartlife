@@ -1,0 +1,163 @@
+:root {
+    --primary: #4e73df;
+    --success: #1cc88a;
+    --danger: #e74a3b;
+    --text-dim: #a1a1a1;
+}
+
+.savings-hero {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    padding: 2.5rem;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 2rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.total-balance-amount {
+    font-family: 'Syne', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--success);
+    margin: 10px 0;
+    text-shadow: 0 10px 20px rgba(28, 200, 138, 0.3);
+}
+
+/* Status Badges */
+.badge-deposit-goal {
+    background: rgba(78, 115, 223, 0.2);
+    color: #4e73df;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.badge-deposit-rem {
+    background: rgba(28, 200, 138, 0.2);
+    color: #1cc88a;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.badge-withdraw {
+    background: rgba(231, 74, 59, 0.2);
+    color: #e74a3b;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Withdraw Button Styling */
+.btn-withdraw-action {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(135deg, #e74a3b, #be2617);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-withdraw-action:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(231, 74, 59, 0.4);
+    filter: brightness(1.1);
+}
+
+.btn-withdraw-action:active {
+    transform: translateY(-1px);
+}
+
+/* --- Responsive Adjustments --- */
+
+/* Tablets සහ කුඩා Laptop සඳහා (Screen width < 992px) */
+@media (max-width: 992px) {
+    .main-grid {
+        grid-template-columns: 1fr; /* පැත්තකින් තිබුණු Withdraw Form එක යටට ගෙන ඒම */
+        gap: 20px;
+    }
+
+    .total-balance-amount {
+        font-size: 2.8rem; /* Font size එක මදක් අඩු කිරීම */
+    }
+}
+
+/* Mobile Phones සඳහා (Screen width < 600px) */
+@media (max-width: 600px) {
+    .main-content {
+        padding: 15px;
+    }
+
+    header.glass {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .savings-hero {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .total-balance-amount {
+        font-size: 2rem; /* Mobile වලදී අකුරු තවත් කුඩා කිරීම */
+    }
+
+    /* Table එක Mobile වලදී Scroll කළ හැකි වීම */
+    .table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    table {
+        min-width: 500px; /* Table එක තෙරපීම වැළැක්වීමට */
+    }
+
+    .glass-card {
+        padding: 15px;
+    }
+
+    .form-title {
+        font-size: 1.1rem;
+    }
+
+    input[type="number"] {
+        padding: 12px;
+    }
+
+    .btn-withdraw-action {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Sidebar එක සහ Main Content එක අතර ගැටුමක් ඇතිවීම වැළැක්වීමට */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+}
